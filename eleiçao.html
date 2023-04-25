@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body style="text-align: center;">
+        <div id="div_eleiçao">
+            <h1 style="color:blue">Candidatos a Governador de São Paulo</h1>
+    
+            <span>Candidato 1</span> <br>
+            <input id="id_candidato1" placeholder="Nome do Candidato"> <br><br>
+    
+            <span>Candidato 2</span> <br>
+            <input id="id_candidato2" placeholder="Nome do Candidato"> <br><br>
+    
+            <span>Candidato 3</span> <br>
+            <input id="id_candidato3" placeholder="Nome do Candidato"> <br><br>
+
+            <span>Candidato 4</span> <br>
+            <input id="id_candidato4" placeholder="Nome do Candidato"> <br><br>
+          
+            <span>Clique no botão para prosseguir</span> <br><br>
+            <button onclick="avançar()">AVANÇAR</button>
+        </div>
+</body>
+</html>
+
+<script>
+    let c1 = ''
+    let c2 = ''
+    let c3 = ''
+    let c4 = ''
+    function avançar() {
+        c1 = id_candidato1.value
+        c2 = id_candidato2.value
+        c3 = id_candidato3.value
+        c4 = id_candidato4.value
+
+
+        div_eleiçao.innerHTML = `
+        <h1 style="color:blue">Votos</h1>
+        <span>${c1}</span> <br>
+        <input id="id_votosc1" placeholder="Digite a quantidade de votos ${c1}" > <br><br>
+        <span>${c2}</span> <br>
+        <input id="id_votosc2" placeholder="Digite a quantidade de votos ${c2}" > <br><br>
+        <span>${c3}</span> <br>
+        <input id="id_votosc3" placeholder="Digite a quantidade de votos ${c3}" > <br><br>
+        <span>${c4}</span> <br>
+        <input id="id_votosc4" placeholder="Digite a quantidade de votos ${c4}" > <br><br>
+        <br>
+        <button onclick="votareleiçao()">Votar</button>
+        `
+    }
+    function votareleiçao() {
+        let qtd_vc1 = Number(id_votosc1.value) 
+        let qtd_vc2 = Number(id_votosc2.value)
+        let qtd_vc3 = Number(id_votosc3.value)
+        let qtd_vc4 = Number(id_votosc4.value)
+
+
+     if (qtd_vc1 > qtd_vc2 && qtd_vc1 > qtd_vc3 && qtd_vc1 > qtd_vc4 && qtd_vc2 > qtd_vc3 && qtd_vc2> qtd_vc4) {
+            alert(`Candidato ${c1} teve ${qtd_vc1} votos, por conta disso é o novo governador de São Paulo. Candidato ${c2} teve ${qtd_vc2} votos, portanto é o novo vice-governador.`)
+        }else if (qtd_vc1 > qtd_vc2 && qtd_vc1 > qtd_vc3 && qtd_vc1 > qtd_vc4 && qtd_vc3> qtd_vc2 && qtd_vc3> qtd_vc4) {
+            alert(`Candidato ${c1} teve ${qtd_vc1} votos, por conta disso é o novo governador de São Paulo. Candidato ${c3} teve ${qtd_vc3} votos, portanto é o novo vice-governador.`)
+        }else if (qtd_vc1 > qtd_vc2 && qtd_vc1 > qtd_vc3 && qtd_vc1 > qtd_vc4 && qtd_vc4> qtd_vc2 && qtd_vc4> qtd_vc3) {
+            alert(`Candidato ${c1} teve ${qtd_vc1} votos, por conta disso é o novo governador de São Paulo. Candidato ${c4} teve ${qtd_vc4} votos, portanto é o novo vice-governador.`)
+
+
+        } else if (qtd_vc2 > qtd_vc1 && qtd_vc2 > qtd_vc3 && qtd_vc2 > qtd_vc4 && qtd_vc1 > qtd_vc3 && qtd_vc1 > qtd_vc4) {
+            alert(`Candidato ${c2} teve ${qtd_vc2} votos, por conta disso é o novo governador de São Paulo. Candidato ${c1} teve ${qtd_vc1} votos, portanto é o novo vice-governador.`)
+        } else if (qtd_vc2 > qtd_vc1 && qtd_vc2 > qtd_vc3 && qtd_vc2 > qtd_vc4 && qtd_vc3 > qtd_vc1 && qtd_vc3 > qtd_vc4) {
+            alert(`Candidato ${c2} teve ${qtd_vc2} votos, por conta disso é o novo governador de São Paulo. Candidato ${c3} teve ${qtd_vc3} votos, portanto é o novo vice-governador.`)
+        } else if (qtd_vc2 > qtd_vc1 && qtd_vc2 > qtd_vc3 && qtd_vc2 > qtd_vc4 && qtd_vc4 > qtd_vc1 && qtd_vc4 > qtd_vc3) {
+            alert(`Candidato ${c2} teve ${qtd_vc2} votos, por conta disso é o novo governador de São Paulo. Candidato ${c4} teve ${qtd_vc4} votos, portanto é o novo vice-governador.`)
+
+
+        } else if (qtd_vc3 > qtd_vc1 && qtd_vc3 > qtd_vc2 && qtd_vc3 > qtd_vc4 && qtd_vc1 > qtd_vc2 && qtd_vc1> qtd_vc4) {
+            alert(`Candidato ${c3} teve ${qtd_vc3} votos, por conta disso é o novo governador de São Paulo. Candidato ${c1} teve ${qtd_vc1} votos, portanto é o novo vice-governador.`)
+        } else if (qtd_vc3 > qtd_vc1 && qtd_vc3 > qtd_vc2 && qtd_vc3 > qtd_vc4 && qtd_vc2 > qtd_vc1 && qtd_vc2> qtd_vc4) {
+            alert(`Candidato ${c3} teve ${qtd_vc3} votos, por conta disso é o novo governador de São Paulo. Candidato ${c2} teve ${qtd_vc2} votos, portanto é o novo vice-governador.`)
+        } else if (qtd_vc3 > qtd_vc1 && qtd_vc3 > qtd_vc2 && qtd_vc3 > qtd_vc4 && qtd_vc4 > qtd_vc2 && qtd_vc4> qtd_vc1) {
+            alert(`Candidato ${c3} teve ${qtd_vc3} votos, por conta disso é o novo governador de São Paulo. Candidato ${c4} teve ${qtd_vc4} votos, portanto é o novo vice-governador.`)
+
+
+        } else if (qtd_vc4 > qtd_vc1 && qtd_vc4 > qtd_vc2 && qtd_vc4 >qtd_vc3 && qtd_vc1 > qtd_vc2 && qtd_vc1 > qtd_vc3) {
+            alert(`Candidato ${c4} teve ${qtd_vc4} votos, por conta disso é o novo governador de São Paulo. Candidato ${c1} teve ${qtd_vc1} votos, portanto é o novo vice-governador.`)
+        } else if (qtd_vc4 > qtd_vc1 && qtd_vc4 > qtd_vc2 && qtd_vc4 >qtd_vc3 && qtd_vc2 > qtd_vc1 && qtd_vc2 > qtd_vc3) {
+            alert(`Candidato ${c4} teve ${qtd_vc4} votos, por conta disso é o novo governador de São Paulo. Candidato ${c2} teve ${qtd_vc2} votos, portanto é o novo vice-governador.`)
+        } else if (qtd_vc4 > qtd_vc1 && qtd_vc4 > qtd_vc2 && qtd_vc4 >qtd_vc3 && qtd_vc3 > qtd_vc2 && qtd_vc3 > qtd_vc1) {
+            alert(`Candidato ${c4} teve ${qtd_vc4} votos, por conta disso é o novo governador de São Paulo. Candidato ${c3} teve ${qtd_vc3} votos, portanto é o novo vice-governador.`)
+    }
+
+}
+</script>
+</body>
+</html>
+
+    
+
